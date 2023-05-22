@@ -9,6 +9,8 @@ services:
       - tarantool-net
     ports:
       - "3301:3301"
+    volumes:
+      - db_data1:/var/lib/tarantool:rw
 
   tarantool2:
     image: tarantool/tarantool:latest
@@ -18,7 +20,13 @@ services:
       - tarantool-net
     ports:
       - "3302:3301"
+    volumes:
+      - db_data2:/var/lib/tarantool:rw
 
 networks:
   tarantool-net:
     driver: bridge
+
+volumes:
+  db_data1:
+  db_data2:
