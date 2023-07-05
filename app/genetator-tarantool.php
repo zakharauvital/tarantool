@@ -19,7 +19,7 @@ $space = $client->getSpace('test');
 $milliseconds1 = microtime(true);
 
 for($i = 1; $i <= KEYS_COUNT; $i++) {
-    $space->insert([$i, 'foo' . $i]);
+    $space->insert([$i, (string)$i]);
 }
 
 $time = (microtime(true) - $milliseconds1) * 1000;

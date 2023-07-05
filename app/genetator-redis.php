@@ -14,11 +14,15 @@ $redis = new \Redis();
 $redis->connect('redis', 6379);
 echo "Connection to Redis is successfully" . PHP_EOL . PHP_EOL;
 
+$redis->flushAll();
+
+echo "Redis has been flushed all" . PHP_EOL . PHP_EOL;
+
 $milliseconds1 = microtime(true);
 
 $pipeline = $redis->pipeline();
 for ($i = 1; $i <= KEYS_COUNT; $i++) {
-    $pipeline->set((string)$i, 'foo' . $i);
+    $pipeline->set((string)$i, (string)$i);
 }
 $pipeline->exec();
 
