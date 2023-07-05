@@ -1,32 +1,40 @@
 version: '3.9'
 
 services:
-  tarantool1:
+  tarantool:
     image: tarantool/tarantool:latest
-    environment:
-      TARANTOOL_REPLICATION: "tarantool1,tarantool2"
     networks:
       - tarantool-net
     ports:
-      - "3301:3301"
+      - "3301:3301/tcp"
     volumes:
-      - db_data1:/var/lib/tarantool:rw
+      - db_data_tarantool:/var/lib/tarantool:rw
 
-  tarantool2:
-    image: tarantool/tarantool:latest
-    environment:
-      TARANTOOL_REPLICATION: "tarantool1,tarantool2"
+  redis:
+    image: redis:7.0.11-alpine3.18
+    ports:
+      - "6379:6379/tcp"
+    volumes:
+      - db_data_redis:/data:rw
     networks:
       - tarantool-net
-    ports:
-      - "3302:3301"
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/php-cli/Dockerfile
     volumes:
-      - db_data2:/var/lib/tarantool:rw
+      - ./app:/var/www/html
+    networks:
+      - tarantool-net
+    depends_on:
+      - redis
+      - tarantool
 
 networks:
   tarantool-net:
     driver: bridge
 
 volumes:
-  db_data1:
-  db_data2:
+  db_data_redis:
+  db_data_tarantool:

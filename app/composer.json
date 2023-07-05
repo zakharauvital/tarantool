@@ -1,0 +1,5 @@
+{
+    "require": {
+        "tarantool/client": "^0.10.0"
+    }
+}
