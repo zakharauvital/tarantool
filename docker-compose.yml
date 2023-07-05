@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   tarantool:
-    image: tarantool/tarantool:latest
+    image: tarantool/tarantool:2.11-ubuntu20.04
     networks:
       - tarantool-net
     ports:
