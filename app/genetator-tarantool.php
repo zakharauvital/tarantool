@@ -16,6 +16,8 @@ $client = Client::fromDsn('tcp://tarantool:3301');
 
 $space = $client->getSpace('test');
 
+$client->call('box.space.test:truncate');
+
 $milliseconds1 = microtime(true);
 
 for($i = 1; $i <= KEYS_COUNT; $i++) {
