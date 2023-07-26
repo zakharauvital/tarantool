@@ -37,16 +37,16 @@ $space = $client->getSpace('test');
 
 // ------------------------------------------------------------
 
-echo "Inserting " . KEYS_COUNT . " keys into Tarantool..." . PHP_EOL . PHP_EOL;
-
-$client->call('box.space.test:truncate');
-$client->
-$milliseconds1 = microtime(true);
-for($i = 1; $i <= KEYS_COUNT; $i++) {
-    $space->insert([$i, (string)$i]);
-}
-$time = (microtime(true) - $milliseconds1) * 1000;
-echo "Time: $time ms" . PHP_EOL . PHP_EOL;
+//echo "Inserting " . KEYS_COUNT . " keys into Tarantool..." . PHP_EOL . PHP_EOL;
+//
+//$client->call('box.space.test:truncate');
+//$client->
+//$milliseconds1 = microtime(true);
+//for($i = 1; $i <= KEYS_COUNT; $i++) {
+//    $space->insert([$i, (string)$i]);
+//}
+//$time = (microtime(true) - $milliseconds1) * 1000;
+//echo "Time: $time ms" . PHP_EOL . PHP_EOL;
 
 // ------------------------------------------------------------
 

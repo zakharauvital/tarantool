@@ -15,14 +15,14 @@ echo "Connection to Redis is successfully" . PHP_EOL . PHP_EOL;
 const KEYS_COUNT = 100000;
 
 // ------------------------------------------------------------
-//echo "Getting " . KEYS_COUNT . " keys from Redis..." . PHP_EOL . PHP_EOL;
+echo "Getting " . KEYS_COUNT . " keys from Redis..." . PHP_EOL . PHP_EOL;
 
-//$milliseconds1 = microtime(true);
-//for ($i = 1; $i <= KEYS_COUNT; $i++) {
-//    $redis->get((string)$i);
-//}
-//$time = (microtime(true) - $milliseconds1) * 1000;
-//echo "Time: $time ms" . PHP_EOL . PHP_EOL;
+$milliseconds1 = microtime(true);
+for ($i = 1; $i <= KEYS_COUNT; $i++) {
+    $redis->get((string)$i);
+}
+$time = (microtime(true) - $milliseconds1) * 1000;
+echo "Time: $time ms" . PHP_EOL . PHP_EOL;
 
 // ------------------------------------------------------------
 
@@ -40,16 +40,16 @@ const KEYS_COUNT = 100000;
 
 // ------------------------------------------------------------
 
-echo "Inserting " . KEYS_COUNT . " keys into Redis..." . PHP_EOL . PHP_EOL;
-
-$redis->flushAll();
-
-$milliseconds1 = microtime(true);
-for ($i = 1; $i <= KEYS_COUNT; $i++) {
-    $redis->set((string)$i, (string)$i);
-}
-$time = (microtime(true) - $milliseconds1) * 1000;
-echo "Time: $time ms" . PHP_EOL . PHP_EOL;
+//echo "Inserting " . KEYS_COUNT . " keys into Redis..." . PHP_EOL . PHP_EOL;
+//
+//$redis->flushAll();
+//
+//$milliseconds1 = microtime(true);
+//for ($i = 1; $i <= KEYS_COUNT; $i++) {
+//    $redis->set((string)$i, (string)$i);
+//}
+//$time = (microtime(true) - $milliseconds1) * 1000;
+//echo "Time: $time ms" . PHP_EOL . PHP_EOL;
 
 // ------------------------------------------------------------
 
